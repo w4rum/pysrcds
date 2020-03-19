@@ -155,7 +155,7 @@ class RconConnection(object):
         # Read and ignore the extra empty body response
         self._recv_pkt()
         return RconPacket(req_pkt.pkt_id, SERVERDATA_RESPONSE_VALUE,
-                          ''.join(str(body_parts)))
+                          ''.join([x.decode("UTF-8") for x in body_parts]))
 
 
 class RconError(Exception):
